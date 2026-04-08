@@ -1,0 +1,3 @@
+<!-- Maven project descriptor for the Courier Tracking System backend.       -->
+<!-- Declares Spring Boot parent, Java version, and module dependencies       -->
+<!-- including Spring Web, Spring Data JPA, Spring Security, and the DB driver. -->
