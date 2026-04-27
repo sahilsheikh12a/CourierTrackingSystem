@@ -4,18 +4,22 @@ import com.couriertracking.tracking.dto.TrackingResponse;
 import com.couriertracking.tracking.mapper.TrackingMapper;
 import com.couriertracking.tracking.repository.ShipmentRepository;
 import com.couriertracking.tracking.repository.TrackingHistoryRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TrackingService {
     private final ShipmentRepository shipmentRepository;
     private final TrackingHistoryRepository trackingHistoryRepository;
-    private final TrackingMapper trackingMapper = new TrackingMapper();
+    private final TrackingMapper trackingMapper;
 
     public TrackingService(
             ShipmentRepository shipmentRepository,
-            TrackingHistoryRepository trackingHistoryRepository
+            TrackingHistoryRepository trackingHistoryRepository,
+            TrackingMapper trackingMapper
     ) {
         this.shipmentRepository = shipmentRepository;
         this.trackingHistoryRepository = trackingHistoryRepository;
+        this.trackingMapper = trackingMapper;
     }
 
     public TrackingResponse getTracking(String trackingId) {

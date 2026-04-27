@@ -1,7 +1,9 @@
 package com.couriertracking.booking.validator;
 
 import com.couriertracking.booking.dto.BookingRequest;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookingValidator {
     public void validate(BookingRequest request) {
         require(request.getSenderName(), "Sender name is required.");

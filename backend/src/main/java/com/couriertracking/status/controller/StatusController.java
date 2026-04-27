@@ -3,7 +3,14 @@ package com.couriertracking.status.controller;
 import com.couriertracking.status.dto.StatusUpdateRequest;
 import com.couriertracking.status.dto.StatusUpdateResponse;
 import com.couriertracking.status.service.StatusUpdateService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/api/status")
 public class StatusController {
     private final StatusUpdateService statusUpdateService;
 
@@ -11,7 +18,8 @@ public class StatusController {
         this.statusUpdateService = statusUpdateService;
     }
 
-    public StatusUpdateResponse updateStatus(StatusUpdateRequest request) {
-        return statusUpdateService.updateStatus(request);
+    @PutMapping
+    public ResponseEntity<StatusUpdateResponse> updateStatus(@RequestBody StatusUpdateRequest request) {
+        return ResponseEntity.ok(statusUpdateService.updateStatus(request));
     }
 }

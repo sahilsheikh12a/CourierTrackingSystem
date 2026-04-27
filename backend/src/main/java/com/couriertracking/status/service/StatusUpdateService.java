@@ -10,8 +10,11 @@ import com.couriertracking.tracking.entity.TrackingHistory;
 import com.couriertracking.tracking.repository.ShipmentRepository;
 import com.couriertracking.tracking.repository.TrackingHistoryRepository;
 
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 
+@Service
 public class StatusUpdateService {
     private final ShipmentRepository shipmentRepository;
     private final TrackingHistoryRepository trackingHistoryRepository;

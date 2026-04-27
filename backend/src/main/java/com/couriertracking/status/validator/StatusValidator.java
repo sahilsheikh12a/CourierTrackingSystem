@@ -1,7 +1,9 @@
 package com.couriertracking.status.validator;
 
 import com.couriertracking.shared.enums.ShipmentStatus;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StatusValidator {
     public void validateTransition(ShipmentStatus currentStatus, ShipmentStatus newStatus) {
         boolean valid = switch (currentStatus) {

@@ -1,11 +1,13 @@
 package com.couriertracking.tracking.repository;
 
 import com.couriertracking.tracking.entity.Shipment;
+import org.springframework.stereotype.Repository;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class ShipmentRepository {
     private final Map<String, Shipment> shipments = new LinkedHashMap<>();
 

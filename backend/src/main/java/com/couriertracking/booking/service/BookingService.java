@@ -14,25 +14,30 @@ import com.couriertracking.tracking.entity.TrackingHistory;
 import com.couriertracking.tracking.repository.ShipmentRepository;
 import com.couriertracking.tracking.repository.TrackingHistoryRepository;
 
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 
+@Service
 public class BookingService {
     private final ParcelRepository parcelRepository;
     private final ShipmentRepository shipmentRepository;
     private final TrackingHistoryRepository trackingHistoryRepository;
     private final BookingValidator bookingValidator;
-    private final BookingMapper bookingMapper = new BookingMapper();
+    private final BookingMapper bookingMapper;
 
     public BookingService(
             ParcelRepository parcelRepository,
             ShipmentRepository shipmentRepository,
             TrackingHistoryRepository trackingHistoryRepository,
-            BookingValidator bookingValidator
+            BookingValidator bookingValidator,
+            BookingMapper bookingMapper
     ) {
         this.parcelRepository = parcelRepository;
         this.shipmentRepository = shipmentRepository;
         this.trackingHistoryRepository = trackingHistoryRepository;
         this.bookingValidator = bookingValidator;
+        this.bookingMapper = bookingMapper;
     }
 
     public BookingResponse createBooking(BookingRequest request) {

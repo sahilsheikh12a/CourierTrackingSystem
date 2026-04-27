@@ -1,0 +1,30 @@
+#!/bin/sh
+# Maven Wrapper — auto-downloads Maven if not on PATH
+
+MAVEN_VERSION="3.9.9"
+CACHE_DIR="$HOME/.m2/wrapper/dists/apache-maven-$MAVEN_VERSION"
+MAVEN_URL="https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/$MAVEN_VERSION/apache-maven-$MAVEN_VERSION-bin.tar.gz"
+
+if command -v mvn >/dev/null 2>&1; then
+    exec mvn "$@"
+fi
+
+if [ ! -f "$CACHE_DIR/bin/mvn" ]; then
+    echo "Downloading Apache Maven $MAVEN_VERSION to $CACHE_DIR ..."
+    mkdir -p "$HOME/.m2/wrapper/dists"
+    TMP=$(mktemp)
+    if command -v curl >/dev/null 2>&1; then
+        curl -fsSL "$MAVEN_URL" -o "$TMP"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -q "$MAVEN_URL" -O "$TMP"
+    else
+        echo "Error: curl or wget is required to download Maven." >&2
+        exit 1
+    fi
+    mkdir -p "$CACHE_DIR"
+    tar -xzf "$TMP" -C "$CACHE_DIR" --strip-components=1
+    rm -f "$TMP"
+    echo "Maven $MAVEN_VERSION ready."
+fi
+
+exec "$CACHE_DIR/bin/mvn" "$@"
