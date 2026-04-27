@@ -1,4 +1,17 @@
-// REST controller for shipment status update endpoints.
-// Allows authorized staff and delivery agents to submit status updates.
-// Maps to: POST /api/status/update
-// Restricted to staff, delivery agent, and admin roles.
+package com.couriertracking.status.controller;
+
+import com.couriertracking.status.dto.StatusUpdateRequest;
+import com.couriertracking.status.dto.StatusUpdateResponse;
+import com.couriertracking.status.service.StatusUpdateService;
+
+public class StatusController {
+    private final StatusUpdateService statusUpdateService;
+
+    public StatusController(StatusUpdateService statusUpdateService) {
+        this.statusUpdateService = statusUpdateService;
+    }
+
+    public StatusUpdateResponse updateStatus(StatusUpdateRequest request) {
+        return statusUpdateService.updateStatus(request);
+    }
+}

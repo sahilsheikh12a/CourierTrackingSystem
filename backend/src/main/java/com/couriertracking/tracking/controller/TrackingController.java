@@ -1,4 +1,16 @@
-// REST controller for shipment tracking endpoints.
-// Handles public and internal tracking lookups by tracking ID.
-// Maps to: GET /api/track/{trackingId}
-// Public endpoint — no authentication required for customer access.
+package com.couriertracking.tracking.controller;
+
+import com.couriertracking.tracking.dto.TrackingResponse;
+import com.couriertracking.tracking.service.TrackingService;
+
+public class TrackingController {
+    private final TrackingService trackingService;
+
+    public TrackingController(TrackingService trackingService) {
+        this.trackingService = trackingService;
+    }
+
+    public TrackingResponse getTracking(String trackingId) {
+        return trackingService.getTracking(trackingId);
+    }
+}

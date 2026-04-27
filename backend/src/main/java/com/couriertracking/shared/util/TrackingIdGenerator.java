@@ -1,4 +1,17 @@
-// Utility class for generating unique parcel tracking IDs.
-// Produces IDs in the format: CTR-YYYYMMDD-XXXXX
-// where XXXXX is a zero-padded random or sequential number.
-// Must guarantee uniqueness — checks against existing records or uses a safe sequence.
+package com.couriertracking.shared.util;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public final class TrackingIdGenerator {
+    private static final AtomicInteger COUNTER = new AtomicInteger(10000);
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.BASIC_ISO_DATE;
+
+    private TrackingIdGenerator() {
+    }
+
+    public static String nextTrackingId() {
+        return "CTR-" + LocalDate.now().format(FORMATTER) + "-" + COUNTER.incrementAndGet();
+    }
+}

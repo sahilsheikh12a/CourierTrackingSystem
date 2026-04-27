@@ -147,3 +147,28 @@ CourierTrackingSystem/
 ├── roadmap.md
 └── README.md
 ```
+
+## Run The Java Module
+
+This repository now includes a runnable console-based Java module for college presentation flow:
+
+- Parcel booking
+- Shipment tracking
+- Status updates with transition validation
+- Tracking history audit trail
+
+Run it from the project root:
+
+```bash
+./scripts/run-java-module.sh
+```
+
+Suggested demo sequence:
+
+```text
+1. Book a parcel
+2. Copy the generated tracking ID
+3. Track the shipment
+4. Update status to Picked Up / In Transit / Delivered
+5. Track again to show full history
+```

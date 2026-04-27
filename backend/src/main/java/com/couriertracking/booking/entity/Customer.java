@@ -1,3 +1,30 @@
-// JPA entity representing a sender or receiver customer.
-// Fields: id, fullName, phone, email, address, city, state, postalCode.
-// A customer can appear as sender or receiver across multiple parcels.
+package com.couriertracking.booking.entity;
+
+public class Customer {
+    private String name;
+    private String phone;
+
+    public Customer() {
+    }
+
+    public Customer(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+}

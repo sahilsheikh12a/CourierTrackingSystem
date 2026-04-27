@@ -1,2 +1,22 @@
-// Mapper for converting StatusUpdateRequest into a TrackingHistory entity,
-// and for building the StatusUpdateResponse from the saved event.
+package com.couriertracking.status.mapper;
+
+import com.couriertracking.shared.enums.ShipmentStatus;
+import com.couriertracking.status.dto.StatusUpdateResponse;
+
+import java.time.LocalDateTime;
+
+public class StatusMapper {
+    public StatusUpdateResponse toResponse(
+            String trackingId,
+            ShipmentStatus previousStatus,
+            ShipmentStatus currentStatus,
+            LocalDateTime updatedAt
+    ) {
+        return new StatusUpdateResponse(
+                trackingId,
+                previousStatus.displayName(),
+                currentStatus.displayName(),
+                updatedAt
+        );
+    }
+}
